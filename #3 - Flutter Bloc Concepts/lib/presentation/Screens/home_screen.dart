@@ -101,10 +101,16 @@ class _HomeScreenState extends State<HomeScreen> {
             MaterialButton(
               color: widget.color,
             child: Text("Go To Second Screen"),onPressed: (){
+                /// use bloc provider to provide existing bloc to next route
+              /// home screen and second screen are anonymous routes
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => SecondScreen(
-                    title: 'second screen',
-                    color: Colors.redAccent,
+                  builder: (newContext) => BlocProvider.value(
+                    ///send the existing cubit to other route
+                    value:BlocProvider.of<CounterCubit>(context),
+                    child: SecondScreen(
+                      title: 'second screen',
+                      color: Colors.redAccent,
+                    ),
                   )));
             })
           ],
