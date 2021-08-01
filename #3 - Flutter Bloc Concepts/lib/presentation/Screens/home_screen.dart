@@ -1,39 +1,20 @@
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_concepts/logic/cubit/counter_cubit.dart';
+import 'package:flutter_bloc_concepts/presentation/Screens/second_screen.dart';
 
-import 'cubit/counter_cubit.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: BlocProvider<CounterCubit>(
-        create: (context) => CounterCubit(),
-        child: MyHomePage(title: 'Flutter Demo Home Page'),
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  HomeScreen({Key key, this.title, this.color}) : super(key: key);
 
   final String title;
-
+  final Color color;
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,6 +95,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            SizedBox(
+              height: 24,
+            ),
+            MaterialButton(
+              color: widget.color,
+            child: Text("Go To Second Screen"),onPressed: (){
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => SecondScreen(
+                    title: 'second screen',
+                    color: Colors.redAccent,
+                  )));
+            })
           ],
         ),
       ),
