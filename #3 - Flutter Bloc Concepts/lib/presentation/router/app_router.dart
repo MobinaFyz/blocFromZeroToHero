@@ -31,7 +31,7 @@ class AppRouter {
                   ),
                 ));
         break;
-      case '/':
+      case '/third':
         return MaterialPageRoute(
             builder: (_) => BlocProvider.value(
                   value: _counterCubit,
