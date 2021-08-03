@@ -164,7 +164,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 FloatingActionButton(
                   heroTag: Text('${widget.title}'),
                   onPressed: () {
-                    BlocProvider.of<CounterCubit>(context).decrement();
+                    context.read<CounterCubit>().decrement();
+                    //BlocProvider.of<CounterCubit>(context).decrement();
                     // context.bloc<CounterCubit>().decrement();
                   },
                   tooltip: 'Decrement',
@@ -173,8 +174,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 FloatingActionButton(
                   heroTag: Text('${widget.title} 2nd'),
                   onPressed: () {
+                    context.read<CounterCubit>().increment();
                     // BlocProvider.of<CounterCubit>(context).increment();
-                    context.bloc<CounterCubit>().increment();
+                    //context.bloc<CounterCubit>().increment();
                   },
                   tooltip: 'Increment',
                   child: Icon(Icons.add),
