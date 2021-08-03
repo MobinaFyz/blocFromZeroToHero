@@ -89,33 +89,61 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (state.counterValue < 0) {
                   return Text(
                     'BRR, NEGATIVE ' + state.counterValue.toString(),
-                    style: Theme.of(counterCubiBuilderContext)
-                        .textTheme
-                        .headline4,
+                    style:
+                        Theme.of(counterCubiBuilderContext).textTheme.headline4,
                   );
                 } else if (state.counterValue % 2 == 0) {
                   return Text(
                     'YAAAY ' + state.counterValue.toString(),
-                    style: Theme.of(counterCubiBuilderContext)
-                        .textTheme
-                        .headline4,
+                    style:
+                        Theme.of(counterCubiBuilderContext).textTheme.headline4,
                   );
                 } else if (state.counterValue == 5) {
                   return Text(
                     'HMM, NUMBER 5',
-                    style: Theme.of(counterCubiBuilderContext)
-                        .textTheme
-                        .headline4,
+                    style:
+                        Theme.of(counterCubiBuilderContext).textTheme.headline4,
                   );
                 } else
                   return Text(
                     state.counterValue.toString(),
-                    style: Theme.of(counterCubiBuilderContext)
-                        .textTheme
-                        .headline4,
+                    style:
+                        Theme.of(counterCubiBuilderContext).textTheme.headline4,
                   );
               },
             ),
+            SizedBox(
+              height: 24,
+            ),
+            Builder(builder: (context) {
+              final counterState = context.watch<CounterCubit>().state;
+              final internetState = context.watch<InternetCubit>().state;
+
+              if (internetState is InternetConnected &&
+                  internetState.connectionType == ConnectionType.Wifi) {
+                return Text(
+                  'Counter: ' +
+                      counterState.counterValue.toString() +
+                      'Internet: Mobile ',
+                  style: Theme.of(context).textTheme.headline6,
+                );
+              } else if (internetState is InternetConnected &&
+                  internetState.connectionType == ConnectionType.Wifi) {
+                return Text(
+                  'Counter: ' +
+                      counterState.counterValue.toString() +
+                      'Internet: Wifi ',
+                  style: Theme.of(context).textTheme.headline6,
+                );
+              } else {
+                return Text(
+                  'Counter: ' +
+                      counterState.counterValue.toString() +
+                      'Internet: Disconnected ',
+                  style: Theme.of(context).textTheme.headline6,
+                );
+              }
+            }),
             SizedBox(
               height: 24,
             ),
