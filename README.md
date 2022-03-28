@@ -1,6 +1,6 @@
 <h2><b> The Best & Most Complete Flutter BLoc Course - https://youtu.be/THCkkQ-V1-8 </b></h2>
 
-Why is that you may ask? I'll give you a couple of reasons:
+Why  is that you may ask? I'll give you a couple of reasons:
 
 - Every topic is structured nicely on chapters and subchapters, and everyone of these are available on the YouTube timeline for easier "jump-to-topic" access.
 
